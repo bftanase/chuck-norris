@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/joke_nav_graph"
+    app:startDestination="@id/jokeOfTheDayFragment">
+    <fragment
+        android:id="@+id/jokeOfTheDayFragment"
+        android:name="com.example.chucknorris.JokeOfTheDayFragment"
+        android:label="joke_of_the_day_fragment"
+        tools:layout="@layout/joke_of_the_day_fragment" >
+        <action
+            android:id="@+id/action_jokeOfTheDayFragment_to_categoriesFragment"
+            app:destination="@id/categoriesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/categoriesFragment"
+        android:name="com.example.chucknorris.CategoriesFragment"
+        android:label="categories_fragment"
+        tools:layout="@layout/categories_fragment" >
+        <action
+            android:id="@+id/action_categoriesFragment_to_jokeOfTheDayFragment"
+            app:destination="@id/jokeOfTheDayFragment" />
+    </fragment>
+</navigation>
