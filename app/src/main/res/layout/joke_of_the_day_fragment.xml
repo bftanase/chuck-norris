@@ -7,13 +7,38 @@
     <data>
         <variable
             name="joke"
-            type="String" />
+            type="ro.btanase.chucknorris.models.Joke" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/textTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="176dp"
+            android:layout_marginTop="31dp"
+            android:layout_marginEnd="176dp"
+            android:text="Chuck Norris Jokes"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.48"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <ImageView
+            android:id="@+id/imageAvatar"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="16dp"
+            app:imageUrl="@{joke.iconUrl}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textTitle"
+            tools:src="@tools:sample/avatars" />
 
         <TextView
             android:id="@+id/textJoTD"
@@ -22,7 +47,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="16dp"
-            android:text="@{joke}"
+            android:text="@{joke.text}"
             android:textSize="24sp"
             android:textStyle="italic"
             app:layout_constraintBottom_toTopOf="@id/anotherJokeButton"
@@ -31,7 +56,7 @@
             app:layout_constraintHeight_min="100dp"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textTitle"
+            app:layout_constraintTop_toBottomOf="@id/imageAvatar"
             app:layout_constraintVertical_bias="0.2"
             tools:text="@tools:sample/lorem" />
 
@@ -59,20 +84,7 @@
             app:layout_constraintStart_toEndOf="@+id/anotherJokeButton"
             app:layout_constraintTop_toBottomOf="@+id/textJoTD" />
 
-        <TextView
-            android:id="@+id/textTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="176dp"
-            android:layout_marginTop="31dp"
-            android:layout_marginEnd="176dp"
-            android:text="Chuck Norris Jokes"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.48"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

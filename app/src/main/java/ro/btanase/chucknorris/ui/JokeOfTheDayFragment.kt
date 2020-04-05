@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import ro.btanase.chucknorris.databinding.JokeOfTheDayFragmentBinding
 import org.koin.android.viewmodel.ext.android.viewModel
 import kotlinx.coroutines.launch
+import ro.btanase.chucknorris.models.Joke
 
 
 class JokeOfTheDayFragment : Fragment() {
@@ -25,7 +26,7 @@ class JokeOfTheDayFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val nameObserver = Observer<String> {
+        val nameObserver = Observer<Joke> {
             newJoke -> binding.joke = newJoke
         }
 

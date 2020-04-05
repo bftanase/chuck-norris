@@ -8,7 +8,10 @@ data class Joke (
     @SerializedName("id")
     val id: String,
     @SerializedName("categories")
-    val categories: List<String>
+    val categories: List<String>,
+    @SerializedName("icon_url")
+    val iconUrl: String
+
 
 
 )
