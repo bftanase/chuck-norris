@@ -9,9 +9,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.chucknorris.databinding.JokeOfTheDayFragmentBinding
 import kotlinx.android.synthetic.main.joke_of_the_day_fragment.*
+import org.koin.android.viewmodel.ext.android.viewModel
+import kotlinx.coroutines.launch
 
 
 class JokeOfTheDayFragment : Fragment() {
@@ -21,7 +24,7 @@ class JokeOfTheDayFragment : Fragment() {
     }
     private lateinit var binding: JokeOfTheDayFragmentBinding
 
-    private  val viewModel: JokeOfTheDayViewModel by viewModels()
+    private  val viewModel: JokeOfTheDayViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +39,10 @@ class JokeOfTheDayFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewModel.randomJoke() // initialize
+        lifecycleScope.launch {
+            viewModel.randomJoke()
+        }
+         // initialize
 
         binding = JokeOfTheDayFragmentBinding.inflate(layoutInflater);
         binding.viewCategoriesButton.setOnClickListener{
@@ -46,7 +52,9 @@ class JokeOfTheDayFragment : Fragment() {
         }
 
         binding .anotherJokeButton.setOnClickListener{
-            viewModel.randomJoke()
+            lifecycleScope.launch {
+                viewModel.randomJoke()
+            }
         }
 
         return binding.root
