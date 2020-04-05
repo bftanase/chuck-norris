@@ -1,8 +1,8 @@
-package com.example.chucknorris
+package ro.btanase.chucknorris.ui
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.chucknorris.com.example.chucknorris.repositories.JokesRepository
+import ro.btanase.chucknorris.repositories.JokesRepository
 
 class JokeOfTheDayViewModel(private val jokesRepository: JokesRepository) : ViewModel() {
 

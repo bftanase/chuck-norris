@@ -1,9 +1,10 @@
-package com.example.chucknorris
+package ro.btanase.chucknorris.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.TextView
+import ro.btanase.chucknorris.R
+
 
 class MainActivity : AppCompatActivity() {
     private var jokeList = listOf("One Joke", "Another One", "And Yet Another One");

@@ -1,4 +1,4 @@
-package com.example.chucknorris
+package ro.btanase.chucknorris
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

@@ -6,7 +6,7 @@
     app:startDestination="@id/jokeOfTheDayFragment">
     <fragment
         android:id="@+id/jokeOfTheDayFragment"
-        android:name="com.example.chucknorris.JokeOfTheDayFragment"
+        android:name="ro.btanase.chucknorris.ui.JokeOfTheDayFragment"
         android:label="joke_of_the_day_fragment"
         tools:layout="@layout/joke_of_the_day_fragment" >
         <action
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/categoriesFragment"
-        android:name="com.example.chucknorris.CategoriesFragment"
+        android:name="ro.btanase.chucknorris.ui.CategoriesFragment"
         android:label="categories_fragment"
         tools:layout="@layout/categories_fragment" >
         <action

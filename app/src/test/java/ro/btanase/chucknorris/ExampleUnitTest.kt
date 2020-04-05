@@ -1,4 +1,4 @@
-package com.example.chucknorris
+package ro.btanase.chucknorris
 
 import org.junit.Test
 
