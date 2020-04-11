@@ -52,9 +52,7 @@ class JokeOfTheDayFragment : Fragment() {
         lifecycleScope.launch {
             viewModel.selectCategory(args.category)
         }
-
-        Toast.makeText(requireContext(), "Changing fragment: " + args.category , Toast.LENGTH_LONG).show()
-
+        
         binding.anotherJokeButton.setOnClickListener{
             lifecycleScope.launch {
                 viewModel.randomJoke()

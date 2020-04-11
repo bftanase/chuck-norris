@@ -12,4 +12,7 @@ Notes:
  - The UI is very basic since I'm not a designer :)
 
 
+# Demo
+![demo](./doc/img/demo.gif)
+ 
 [1]:https://api.chucknorris.io/
