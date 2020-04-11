@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.coroutines.launch
 import org.koin.android.viewmodel.ext.android.viewModel
 import ro.btanase.chucknorris.R
@@ -27,6 +28,10 @@ class CategoriesFragment : Fragment() {
     ): View? {
         binding = CategoriesFragmentBinding.inflate(layoutInflater)
         binding.categoriesList.adapter = adapter
+        binding.categoriesList.setHasFixedSize(true)
+//        val layoutManager = LinearLayoutManager(activity)
+//        binding.categoriesList.layoutManager = layoutManager
+//        binding.categoriesList.layoutMode =
 
         lifecycleScope.launch {
             adapter.submitList(viewModel.getCategories())

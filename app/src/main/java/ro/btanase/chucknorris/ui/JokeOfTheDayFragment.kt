@@ -25,22 +25,23 @@ class JokeOfTheDayFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val nameObserver = Observer<Joke> {
+        val jokeObserver = Observer<Joke> {
             newJoke -> binding.joke = newJoke
         }
 
-        viewModel.joke.observe(this, nameObserver)
+        viewModel.joke.observe(this, jokeObserver)
+
+        val selectedCategoryObserver = Observer<String> {
+            newCategory -> binding.selectedCategory = newCategory
+        }
+
+        viewModel.selectedCategory.observe(this, selectedCategoryObserver)
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        lifecycleScope.launch {
-            viewModel.randomJoke()
-        }
-         // initialize
-
         binding = JokeOfTheDayFragmentBinding.inflate(layoutInflater);
         binding.viewCategoriesButton.setOnClickListener{
             val directions =
@@ -48,7 +49,11 @@ class JokeOfTheDayFragment : Fragment() {
             findNavController().navigate(directions);
         }
 
-        Toast.makeText(requireContext(), "Changing fragment: " , Toast.LENGTH_LONG).show()
+        lifecycleScope.launch {
+            viewModel.selectCategory(args.category)
+        }
+
+        Toast.makeText(requireContext(), "Changing fragment: " + args.category , Toast.LENGTH_LONG).show()
 
         binding.anotherJokeButton.setOnClickListener{
             lifecycleScope.launch {

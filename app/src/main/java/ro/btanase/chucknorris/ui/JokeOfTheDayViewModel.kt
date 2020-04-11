@@ -9,14 +9,21 @@ import ro.btanase.chucknorris.repositories.JokesRepository
 
 class JokeOfTheDayViewModel(private val jokesRepository: JokesRepository) : ViewModel() {
 
+    val selectedCategory : MutableLiveData<String> by lazy {
+        MutableLiveData<String>()
+    }
+
     val joke: MutableLiveData<Joke> by lazy {
         MutableLiveData<Joke>()
     }
 
-    private val jokeList = listOf<String>("JOke 1", "Joke 2", "Joke 3", "Joke 4")
-
     suspend fun randomJoke() {
-        joke.value = jokesRepository.getRandomJoke()
+        joke.value = jokesRepository.getRandomJoke(selectedCategory.value!!)
+    }
+
+    suspend fun selectCategory(category: String) {
+        selectedCategory.value = category
+        joke.value = jokesRepository.getRandomJoke(category)
     }
 }
 
