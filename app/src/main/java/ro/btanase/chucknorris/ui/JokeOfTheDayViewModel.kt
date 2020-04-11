@@ -7,8 +7,6 @@ import com.squareup.picasso.Picasso
 import ro.btanase.chucknorris.models.Joke
 import ro.btanase.chucknorris.repositories.JokesRepository
 
-
-
 class JokeOfTheDayViewModel(private val jokesRepository: JokesRepository) : ViewModel() {
 
     val joke: MutableLiveData<Joke> by lazy {

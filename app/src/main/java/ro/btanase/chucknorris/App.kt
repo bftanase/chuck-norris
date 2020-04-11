@@ -7,6 +7,7 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
+import ro.btanase.chucknorris.ui.CategoriesViewModel
 import ro.btanase.chucknorris.ui.JokeOfTheDayViewModel
 
 class App : Application() {
@@ -22,6 +23,7 @@ class App : Application() {
     private val appModule = module {
         single { ChuckNorrisWebService() }
         single { JokesRepository(get()) }
+        viewModel { CategoriesViewModel(get()) }
         viewModel { JokeOfTheDayViewModel(get()) }
     }
 }

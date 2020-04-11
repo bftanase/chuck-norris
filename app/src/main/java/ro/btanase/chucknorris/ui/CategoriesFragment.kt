@@ -6,28 +6,46 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
+import kotlinx.coroutines.launch
+import org.koin.android.viewmodel.ext.android.viewModel
 import ro.btanase.chucknorris.R
+import ro.btanase.chucknorris.databinding.CategoriesFragmentBinding
 
 
 class CategoriesFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = CategoriesFragment()
-    }
-
-    private lateinit var viewModel: CategoriesViewModel
+    private lateinit var binding: CategoriesFragmentBinding
+    private val viewModel: CategoriesViewModel by viewModel()
+    private val adapter  = CategoriesAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.categories_fragment, container, false)
+        binding = CategoriesFragmentBinding.inflate(layoutInflater)
+        binding.categoriesList.adapter = adapter
+
+        lifecycleScope.launch {
+            adapter.submitList(viewModel.getCategories())
+        }
+
+        viewModel.onItemClickListener = onItemClickListener
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(CategoriesViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onDestroyView() {
+        viewModel.onItemClickListener = null
+        super.onDestroyView()
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+    }
+
+    private val onItemClickListener: OnCategoryClickListener = { category ->
+        findNavController().navigate(CategoriesFragmentDirections.actionCategoriesFragmentToJokeOfTheDayFragment(category))
+    }
 }

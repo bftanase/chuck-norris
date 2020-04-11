@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import ro.btanase.chucknorris.databinding.JokeOfTheDayFragmentBinding
 import org.koin.android.viewmodel.ext.android.viewModel
 import kotlinx.coroutines.launch
@@ -17,10 +18,8 @@ import ro.btanase.chucknorris.models.Joke
 
 class JokeOfTheDayFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = JokeOfTheDayFragment()
-    }
     private lateinit var binding: JokeOfTheDayFragmentBinding
+    private val args: JokeOfTheDayFragmentArgs by navArgs()
 
     private  val viewModel: JokeOfTheDayViewModel by viewModel()
 
@@ -46,9 +45,10 @@ class JokeOfTheDayFragment : Fragment() {
         binding.viewCategoriesButton.setOnClickListener{
             val directions =
                 JokeOfTheDayFragmentDirections.actionJokeOfTheDayFragmentToCategoriesFragment();
-            Toast.makeText(requireContext(), "Changing fragment", Toast.LENGTH_LONG).show()
             findNavController().navigate(directions);
         }
+
+        Toast.makeText(requireContext(), "Changing fragment: " , Toast.LENGTH_LONG).show()
 
         binding.anotherJokeButton.setOnClickListener{
             lifecycleScope.launch {

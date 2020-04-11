@@ -9,6 +9,10 @@
         android:name="ro.btanase.chucknorris.ui.JokeOfTheDayFragment"
         android:label="joke_of_the_day_fragment"
         tools:layout="@layout/joke_of_the_day_fragment" >
+        <argument
+            android:name="category"
+            app:argType="string"
+            app:nullable="true"/>
         <action
             android:id="@+id/action_jokeOfTheDayFragment_to_categoriesFragment"
             app:destination="@id/categoriesFragment" />
@@ -16,7 +20,7 @@
     <fragment
         android:id="@+id/categoriesFragment"
         android:name="ro.btanase.chucknorris.ui.CategoriesFragment"
-        android:label="categories_fragment"
+        android:label="CategoriesFragment"
         tools:layout="@layout/categories_fragment" >
         <action
             android:id="@+id/action_categoriesFragment_to_jokeOfTheDayFragment"
