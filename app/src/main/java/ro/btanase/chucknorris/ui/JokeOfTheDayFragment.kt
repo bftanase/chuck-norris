@@ -19,9 +19,9 @@ import ro.btanase.chucknorris.models.Joke
 class JokeOfTheDayFragment : Fragment() {
 
     private lateinit var binding: JokeOfTheDayFragmentBinding
-    private val args: JokeOfTheDayFragmentArgs by navArgs()
 
     private  val viewModel: JokeOfTheDayViewModel by viewModel()
+    private val args: JokeOfTheDayFragmentArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

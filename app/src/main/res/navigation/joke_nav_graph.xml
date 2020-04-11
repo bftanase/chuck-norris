@@ -12,7 +12,7 @@
         <argument
             android:name="category"
             app:argType="string"
-            android:defaultValue="ALL" />
+            android:defaultValue="NOT_SET" />
         <action
             android:id="@+id/action_jokeOfTheDayFragment_to_categoriesFragment"
             app:destination="@id/categoriesFragment" />
